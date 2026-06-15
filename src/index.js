@@ -11,7 +11,8 @@ export default {
     }
 
     const url = new URL(request.url);
-    let pathname = url.pathname;
+    const pathname = url.pathname;
+
     if (pathname !== "/" && !pathname.endsWith("/")) {
       return Response.redirect(url.origin + pathname + "/" + (url.search || ""), 308);
     }
@@ -32,9 +33,7 @@ export default {
       try {
         const upstreamResponse = await fetch(`https://nd.kodaktor.ru/users/${id}`, {
           method: "GET",
-          headers: {
-            "Content-Type": ""
-          }
+          headers: {}
         });
 
         const data = await upstreamResponse.json();
