@@ -13,7 +13,7 @@ export default {
     const url = new URL(request.url);
     const pathname = url.pathname;
 
-    if (pathname === "/login/") {
+    if (pathname === "/login") {
       return new Response("lldckv", {
         headers: {
           "Content-Type": "text/plain; charset=UTF-8",
