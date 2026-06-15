@@ -13,11 +13,7 @@ export default {
     const url = new URL(request.url);
     const pathname = url.pathname;
 
-    if (pathname !== "/" && !pathname.endsWith("/")) {
-      return Response.redirect(url.origin + pathname + "/" + (url.search || ""), 308);
-    }
-
-    if (pathname === "/login/") {
+    if (pathname === "/login") {
       return new Response("lldckv", {
         headers: {
           "Content-Type": "text/plain; charset=UTF-8",
@@ -32,8 +28,7 @@ export default {
 
       try {
         const upstreamResponse = await fetch(`https://nd.kodaktor.ru/users/${id}`, {
-          method: "GET",
-          headers: {}
+          method: "GET",        
         });
 
         const data = await upstreamResponse.json();
